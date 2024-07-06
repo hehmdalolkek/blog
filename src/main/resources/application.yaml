@@ -2,8 +2,7 @@ spring:
   application:
     name: blog
   datasource:
-    url: jdbc:tc:mysql:8.0.36:///blog
-  flyway:
-    schemas:
-      - public
-      - blog
+    url: jdbc:tc:mysql:8.0.36:///blog?TC_DAEMON=true
+  jpa:
+    hibernate:
+      ddl-auto: validate
