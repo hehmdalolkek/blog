@@ -1,3 +1,9 @@
 spring:
   application:
     name: blog
+  datasource:
+    url: jdbc:tc:mysql:8.0.36:///blog
+  flyway:
+    schemas:
+      - public
+      - blog
