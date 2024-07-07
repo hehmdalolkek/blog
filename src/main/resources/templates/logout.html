@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+</head>
+<body class="text-center">
+<div class="rounded border shadow p-5 col-4 mx-auto mt-5">
+    <h1>LOG OUT</h1>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" class="btn btn-primary" value="Log out">
+    </form>
+</div>
+<script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
