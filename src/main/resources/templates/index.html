@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+</head>
+<body class="text-center">
+<div class="rounded border shadow p-5 col-4 mx-auto mt-5">
+    <div>
+        <h2 class="mb-4">Select authorization method</h2>
+        <a class="btn btn-primary" th:href="@{/login}" alt="login">Sign In</a>
+        <a class="btn btn-primary" th:href="@{/registration}" alt="registration">Sign Up</a>
+    </div>
+</div>
+<script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
