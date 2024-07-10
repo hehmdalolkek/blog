@@ -1,5 +1,6 @@
 package ru.hehmdalolkek.blog.web.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +29,7 @@ public class UserController {
     }
 
     @PostMapping("/registration")
-    public String registration(@ModelAttribute UserDto userDto) {
+    public String registration(@Valid @ModelAttribute UserDto userDto) {
         userDto.setRoles(Set.of(Role.AUTHOR));
         this.userService.createUser(userDto);
         return "redirect:/login?registration";
