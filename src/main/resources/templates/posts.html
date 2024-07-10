@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Posts</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+</head>
+<body class="text-center">
+<div class="rounded border shadow p-5 col-4 mx-auto mt-5">
+    <h2>Hi, <span th:text="${username}"></span>!</h2>
+</div>
+<div class="col-5 mx-auto">
+    <div th:each="post : ${posts}" class="rounded border shadow p-5 my-5 text-start">
+        <h3 class="mb-4 text-center" th:text="${post.getTitle()}"></h3>
+        <div>
+            <p class="mb-0">Автор: <span th:text="${post.getAuthor().getUsername()}"></span></p>
+            <p>Дата публикации: <span th:text="${post.getCreationDate()}"></span></p>
+            <p th:text="${post.getContent()}"></p>
+        </div>
+    </div>
+</div>
+<script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
