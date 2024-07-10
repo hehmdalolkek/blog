@@ -12,14 +12,14 @@ import java.util.Set;
 import java.util.UUID;
 
 
-@PasswordMatch
+@PasswordMatch(message = "{validation.user.password.match}")
 @Data
 public class UserDto {
 
         UUID id;
 
-        @NotBlank
-        @Size(min = 4, max = 32)
+        @NotBlank(message = "{validation.not-blank}")
+        @Size(min = 4, max = 32, message = "{validation.user.username.size}")
         String username;
 
         @ValidPassword

@@ -8,9 +8,9 @@
 <body class="text-center">
 <div class="rounded border shadow p-5 col-4 mx-auto mt-5">
     <div>
-        <h2 class="mb-4">Select authorization method</h2>
-        <a class="btn btn-primary" th:href="@{/login}" alt="login">Sign In</a>
-        <a class="btn btn-primary" th:href="@{/registration}" alt="registration">Sign Up</a>
+        <h2 class="mb-4" th:text="#{index.title.label}"></h2>
+        <a class="btn btn-primary" th:href="@{/login}" alt="login" th:text="#{sign-in.label}"></a>
+        <a class="btn btn-primary" th:href="@{/registration}" alt="registration" th:text="#{sign-up.label}"></a>
     </div>
 </div>
 <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>

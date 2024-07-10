@@ -2,14 +2,22 @@ package ru.hehmdalolkek.blog.web.constraint;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
+import lombok.SneakyThrows;
 import org.passay.*;
 
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class PasswordConstraintValidator implements ConstraintValidator<ValidPassword, String> {
+
+    @SneakyThrows
     @Override
     public boolean isValid(String password, ConstraintValidatorContext context) {
+        MessageResolver resolver =
+                new ResourceBundleMessageResolver(ResourceBundle.getBundle("locale/messages"));
+
         PasswordValidator validator = new PasswordValidator(
+                resolver,
                 // length between 8 and 16 characters
                 new LengthRule(8, 16),
 
@@ -48,4 +56,5 @@ public class PasswordConstraintValidator implements ConstraintValidator<ValidPas
                 .disableDefaultConstraintViolation();
         return false;
     }
+
 }

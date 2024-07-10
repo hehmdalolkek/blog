@@ -12,12 +12,12 @@ public class PostDto {
 
     UUID id;
 
-    @NotBlank
-    @Size(min = 1, max = 128)
+    @NotBlank(message = "{validation.not-blank}")
+    @Size(min = 1, max = 128, message = "{validation.post.title.size}")
     String title;
 
-    @NotBlank
-    @Size(min = 32, max = 20000)
+    @NotBlank(message = "{validation.not-blank}")
+    @Size(min = 32, max = 20000, message = "{validation.post.content.size}")
     String content;
 
     UserDto author;

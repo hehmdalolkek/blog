@@ -7,27 +7,28 @@
 </head>
 <body class="text-center">
 <div class="rounded border shadow p-5 col-4 mx-auto mt-5">
-    <h1>SIGN UP</h1>
+    <h1 th:text="#{sing-up.title.label}"></h1>
     <form th:action="@{/registration}" method="post" th:object="${user}">
-        <div th:if="${param.error}" class="alert alert-danger">
-            Error
-        </div>
+        <div th:if="${param.error}" class="alert alert-danger" th:text="#{error.label}"></div>
         <div class="mb-2">
-            <label for="username">Username
+            <label for="username">
+                <span th:text="#{username.label}"></span>
                 <input class="form-control" type="text" name="username" id="username">
             </label>
         </div>
         <div class="mb-2">
-            <label for="password">Password
+            <label for="password">
+                <span th:text="#{password.label}"></span>
                 <input class="form-control" type="password" name="password" id="password">
             </label>
         </div>
         <div class="mb-3">
-            <label for="password">Repeat password
-                <input class="form-control" type="password" name="repeat-password" id="repeat-password">
+            <label for="password">
+                <span th:text="#{repeat-password.label}"></span>
+                <input class="form-control" type="password" name="repeatPassword" id="repeat-password">
             </label>
         </div>
-        <input type="submit" class="btn btn-primary" value="Sign Up">
+        <input type="submit" class="btn btn-primary" th:value="#{sign-in.label}">
     </form>
 </div>
 <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
