@@ -49,11 +49,11 @@ public class PasswordConstraintValidator implements ConstraintValidator<ValidPas
             return true;
         }
 
-        List<String> messages = validator.getMessages(result);
-        String message = String.join("; ", messages) + ";";
-        context.buildConstraintViolationWithTemplate(message)
-                .addConstraintViolation()
-                .disableDefaultConstraintViolation();
+        for (String message : validator.getMessages(result)) {
+            context.buildConstraintViolationWithTemplate(message)
+                    .addConstraintViolation()
+                    .disableDefaultConstraintViolation();
+        }
         return false;
     }
 

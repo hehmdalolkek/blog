@@ -12,23 +12,23 @@ import java.util.Set;
 import java.util.UUID;
 
 
-@PasswordMatch(message = "{validation.user.password.match}")
+@PasswordMatch(message = "{validation.user.password.match}", fieldNameForError = "repeatPassword")
 @Data
 public class UserDto {
 
-        UUID id;
+    UUID id;
 
-        @NotBlank(message = "{validation.not-blank}")
-        @Size(min = 4, max = 32, message = "{validation.user.username.size}")
-        String username;
+    @NotBlank(message = "{validation.not-blank}")
+    @Size(min = 4, max = 32, message = "{validation.user.username.size}")
+    String username;
 
-        @ValidPassword
-        String password;
+    @ValidPassword
+    String password;
 
-        String repeatPassword;
+    String repeatPassword;
 
-        Set<Role> roles;
+    Set<Role> roles;
 
-        LocalDateTime registrationDate;
+    LocalDateTime registrationDate;
 
 }

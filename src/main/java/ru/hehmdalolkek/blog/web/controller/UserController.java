@@ -3,6 +3,7 @@ package ru.hehmdalolkek.blog.web.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +19,7 @@ public class UserController {
 
     private final UserService userService;
 
-    @ModelAttribute(value = "user")
+    @ModelAttribute("user")
     public UserDto getUserDto() {
         return new UserDto();
     }
@@ -29,7 +30,10 @@ public class UserController {
     }
 
     @PostMapping("/registration")
-    public String registration(@Valid @ModelAttribute UserDto userDto) {
+    public String registration(@Valid @ModelAttribute("user") UserDto userDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "registration";
+        }
         userDto.setRoles(Set.of(Role.AUTHOR));
         this.userService.createUser(userDto);
         return "redirect:/login?registration";

@@ -17,4 +17,5 @@ public @interface PasswordMatch {
 
     Class<? extends Payload>[] payload() default {};
 
+    String fieldNameForError() default "password";
 }

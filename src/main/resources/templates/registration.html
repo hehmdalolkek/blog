@@ -6,29 +6,39 @@
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
 </head>
 <body class="text-center">
-<div class="rounded border shadow p-5 col-4 mx-auto mt-5">
+<div class="rounded border shadow p-5 col-4 mx-auto m-5">
     <h1 th:text="#{sing-up.title.label}"></h1>
     <form th:action="@{/registration}" method="post" th:object="${user}">
-        <div th:if="${param.error}" class="alert alert-danger" th:text="#{error.label}"></div>
+        <div th:if="${#fields.hasAnyErrors()}" class="alert alert-danger" th:text="#{error.label}"></div>
+        <div th:if="${errorUsername != null}" class="alert alert-danger" th:text="${errorUsername}"></div>
         <div class="mb-2">
             <label for="username">
                 <span th:text="#{username.label}"></span>
-                <input class="form-control" type="text" name="username" id="username">
+                <input class="form-control" type="text" th:field="*{username}" id="username">
             </label>
+            <ul class="list-unstyled" th:if="${#fields.hasErrors('username')}">
+                <li class="text-danger" th:each="error : ${#fields.errors('username')}" th:text="${error}"></li>
+            </ul>
         </div>
         <div class="mb-2">
             <label for="password">
                 <span th:text="#{password.label}"></span>
-                <input class="form-control" type="password" name="password" id="password">
+                <input class="form-control" type="password" th:field="*{password}" id="password">
             </label>
+            <ul class="list-unstyled" th:if="${#fields.hasErrors('password')}">
+                <li class="text-danger" th:each="error : ${#fields.errors('password')}" th:text="${error}"></li>
+            </ul>
         </div>
         <div class="mb-3">
-            <label for="password">
+            <label for="repeatPassword">
                 <span th:text="#{repeat-password.label}"></span>
-                <input class="form-control" type="password" name="repeatPassword" id="repeat-password">
+                <input class="form-control" type="password" th:field="*{repeatPassword}" id="repeatPassword">
             </label>
+            <ul class="list-unstyled" th:if="${#fields.hasErrors('repeatPassword')}">
+                <li class="text-danger" th:each="error : ${#fields.errors('repeatPassword')}" th:text="${error}"></li>
+            </ul>
         </div>
-        <input type="submit" class="btn btn-primary" th:value="#{sign-in.label}">
+        <input type="submit" class="btn btn-primary" th:value="#{sign-up.label}">
     </form>
 </div>
 <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
