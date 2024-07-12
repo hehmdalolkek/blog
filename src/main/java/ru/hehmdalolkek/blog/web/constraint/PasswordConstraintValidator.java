@@ -5,7 +5,6 @@ import jakarta.validation.ConstraintValidatorContext;
 import lombok.SneakyThrows;
 import org.passay.*;
 
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class PasswordConstraintValidator implements ConstraintValidator<ValidPassword, String> {
