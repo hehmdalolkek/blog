@@ -8,7 +8,6 @@
 <body class="text-center">
 <div class="rounded border shadow p-5 col-4 mx-auto m-5">
     <h1 th:text="#{sing-up.title.label}"></h1>
-    <h5><a th:href="@{/oauth2/authorization/google}" th:text="#{sign-in.google.label}"></a></h5>
     <form th:action="@{/registration}" method="post" th:object="${user}">
         <div th:if="${#fields.hasAnyErrors()}" class="alert alert-danger" th:text="#{error.label}"></div>
         <div th:if="${errorUsername != null}" class="alert alert-danger" th:text="${errorUsername}"></div>
@@ -38,6 +37,10 @@
             <ul class="list-unstyled" th:if="${#fields.hasErrors('repeatPassword')}">
                 <li class="text-danger" th:each="error : ${#fields.errors('repeatPassword')}" th:text="${error}"></li>
             </ul>
+        </div>
+        <div class="mb-3">
+            <h6><a th:href="@{/oauth2/authorization/google}" th:text="#{sign-in.google.label}"></a></h6>
+            <h6><a th:href="@{/oauth2/authorization/github}" th:text="#{sign-in.github.label}"></a></h6>
         </div>
         <input type="submit" class="btn btn-primary" th:value="#{sign-up.label}">
     </form>
