@@ -27,8 +27,8 @@ public class SecurityConfig {
                         .successHandler(this.successHandler));
         return http
                 .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
-                        .requestMatchers("/", "/error", "/webjars/**").permitAll()
-                        .requestMatchers("/login/**", "/registration/**", "/oauth/**").anonymous()
+                        .requestMatchers( "/error", "/webjars/**").permitAll()
+                        .requestMatchers("/", "/login/**", "/registration/**", "/oauth/**").anonymous()
                         .anyRequest().authenticated())
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login")

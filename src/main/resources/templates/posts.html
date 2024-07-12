@@ -6,6 +6,14 @@
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
 </head>
 <body class="text-center">
+<nav class="navbar bg-body-tertiary shadow border-bottom">
+    <div class="container-xxl">
+        <a class="navbar-brand">Blog</a>
+        <form th:action="@{/logout}" method="post">
+            <button class="btn btn-primary" type="submit" th:text="#{logout.label}"></button>
+        </form>
+    </div>
+</nav>
 <div class="rounded border shadow p-5 col-4 mx-auto mt-5">
     <h2>
         <span th:text="#{posts.welcome.label}"></span>,
