@@ -1,6 +1,8 @@
 spring:
   application:
     name: blog
+  config:
+    import: optional:file:.env[.properties]
   datasource:
     url: jdbc:tc:mysql:8.0.36:///blog?TC_DAEMON=true
   jpa:
