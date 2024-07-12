@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.hehmdalolkek.blog.model.Post;
 import ru.hehmdalolkek.blog.service.PostService;
+import ru.hehmdalolkek.blog.web.controller.util.ControllerUtil;
 import ru.hehmdalolkek.blog.web.mapper.PostMapper;
 
 import java.security.Principal;
@@ -21,10 +22,13 @@ public class PostController {
 
     private final PostMapper postMapper;
 
+    private final ControllerUtil controllerUtil;
+
     @GetMapping
     public String initPosts(Principal principal, Model model) {
+        String username = this.controllerUtil.getUsernameFromPrincipal(principal);
         List<Post> posts = this.postService.getAllPosts();
-        model.addAttribute("username", principal.getName());
+        model.addAttribute("username", username);
         model.addAttribute("posts", this.postMapper.postsToPostDtos(posts));
         return "posts";
     }
