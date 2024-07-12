@@ -8,6 +8,7 @@
 <body class="text-center">
 <div class="rounded border shadow p-5 col-4 mx-auto mt-5">
     <h1 th:text="#{sing-in.title.label}"></h1>
+    <h5><a th:href="@{/oauth2/authorization/google}" th:text="#{sign-in.google.label}"></a></h5>
     <form th:action="@{/login}" method="post">
         <div th:if="${param.error}" class="alert alert-danger" th:text="#{login.param.error}"></div>
         <div th:if="${param.logout}" class="alert alert-success" th:text="#{login.param.logout}"></div>
